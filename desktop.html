@@ -1,1 +1,144 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Desktop</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    #desktop {
+        width: 100%;
+        height: 100%;
+        background-color: #f0f0f0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 20px;
+    }
+    .app {
+        width: 200px;
+        height: 200px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin: 10px;
+    }
+    .app:hover {
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    .app h2 {
+        margin: 0;
+    }
+    .app-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: #fff;
+        z-index: 1;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    .app-content {
+        height: calc(100% - 40px); /* Adjust for padding */
+        overflow-y: auto;
+    }
+    #home-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 2;
+    }
+</style>
+</head>
+<body>
+<div id="desktop">
+    <div class="app" onclick="openApp('app1')">App 1</div>
+    <div class="app" onclick="openApp('app2')">App 2</div>
+    <div class="app" onclick="openApp('app3')">App 3</div>
+    <div class="app" onclick="openApp('app4')">App 4</div>
+</div>
+
+<div id="app1" class="app-container">
+    <button id="home-btn" onclick="goToDesktop()">Home</button>
+
+    <div class="app-content">
+        <!-- Content and functionality for App 1 -->
+        This is App 1.
+    </div>
+</div>
+
+<div id="app2" class="app-container">
+    <button id="home-btn" onclick="goToDesktop()">Home</button>
+
+    <div class="app-content">
+        <!-- Content and functionality for App 2 -->
+        This is App 2.
+    </div>
+</div>
+
+<div id="app3" class="app-container">
+    <button id="home-btn" onclick="goToDesktop()">Home</button>
+
+    <div class="app-content">
+        <!-- Content and functionality for App 3 -->
+        This is App 3.
+    </div>
+</div>
+
+<div id="app4" class="app-container">
+    <button id="home-btn" onclick="goToDesktop()">Home</button>
+
+    <div class="app-content">
+        <!-- Content and functionality for App 4 -->
+        This is App 4.
+    </div>
+</div>
+
+<script>
+requestFullscreen()
+    function openApp(appId) {
+        // Hide all app containers
+        var appContainers = document.querySelectorAll('.app-container');
+        appContainers.forEach(function(container) {
+            container.style.display = 'none';
+        });
+
+        // Show the selected app container
+        var appContainer = document.getElementById(appId);
+        if (appContainer) {
+            appContainer.style.display = 'flex';
+        }
+    }
+
+    function goToDesktop() {
+        // Hide all app containers
+        var appContainers = document.querySelectorAll('.app-container');
+        appContainers.forEach(function(container) {
+            container.style.display = 'none';
+        });
+    }
+</script>
+</body>
+</html>
